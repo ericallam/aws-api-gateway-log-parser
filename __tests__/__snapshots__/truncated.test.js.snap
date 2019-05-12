@@ -1,0 +1,132 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`parses truncated method request header events 1`] = `
+Object {
+  "0": Object {
+    "@timestamp": "2019-02-26T15:29:33.732Z",
+    "api_stage": "h733q2j6gb/Prod",
+    "endpoint_request_body": Object {
+      "headers": Object {
+        "Accept": "application/json, text/plain, */*",
+        "Content-Type": "application/json;charset=utf-8",
+        "Debug-Log-Enabled": "false",
+        "Host": "h733q2j6gb.execute-api.eu-west-2.amazonaws.com",
+        "User-Agent": "python-requests/2.20.0",
+        "X-Amzn-Trace-Id": "Self=1-5c755b5d-6cdced0b55e7998bc0251bcb;Root=1-5c755b5d-07b29b94e632d3da19d88789;Parent=61e6466ca210cdf8;Sampled=1",
+        "X-Forwarded-For": "18.130.162.42",
+        "X-Forwarded-Port": "443",
+        "X-Forwarded-Proto": "https",
+        "x-correlation-id": "f82097ed-5302-4a98-8200-dad186b419be",
+        "x-correlation-span-id": "LUUMyTw58JG0vhnGfa",
+      },
+      "httpMethod": "POST",
+      "multiValueHeaders": Object {
+        "Accept": Array [
+          "application/json, text/plain, */*",
+        ],
+        "Content-Type": Array [
+          "application/json;charset=utf-8",
+        ],
+        "Debug-Log-Enabled": Array [
+          "false",
+        ],
+        "Host": Array [
+          "h733q2j6gb.execute-api.eu-west-2.amazonaws.com",
+        ],
+        "User-Agent": Array [
+          "python-requests/2.20.0",
+        ],
+        "X-Amzn-Trace-Id": Array [],
+      },
+      "path": "/verifyReceipt",
+      "resource": "/verifyReceipt",
+    },
+    "endpoint_request_headers": Object {
+      "Accept": "application/json",
+      "Authorization": "************************************************************************************************************************************************************************************************************************************************************************************************************************7c8ada",
+      "User-Agent": "AmazonAPIGateway_h733q2j6gb",
+      "X-Amz-Date": "20190226T152933Z",
+      "X-Amz-Security-Token": "FQoGZXIvYXdzELj//////////wEaDLalUxmTRqHiHj42YyK3A4gD12hu4qbiOwSlDeVRlCkCYZKwBvULoV7m93mf/vjJokO7k4GMuX8/ZRwO2fxAONWkGVZEVs8TjHjP9AotqEblh3WY6nJ6XSGNLB2/KImSrDz1fOLNd9Dw8T/RBBOgblTeWDo88lhb2QpWBOS6jeJiEHrQMjg4kwSyBNnGQvn2v80EaUkYp7zenEi8oELJi9ixEbrCBoqJ3fk45XGib+0VpgyeOe5aRUW/rDe7XbhkRABE0BN+NhtKyIXlxvbCaOrXgMtfzFHfp1agMePvUVroFoKaZWawTPH4bs8LnVx [TRUNCATED]",
+      "X-Amz-Source-Arn": "arn:aws:execute-api:eu-west-2:958845080241:h733q2j6gb/Prod/POST/verifyReceipt",
+      "x-amzn-apigateway-api-id": "h733q2j6gb",
+      "x-amzn-lambda-integration-tag": "515f1e99-39db-11e9-9e96-01e5c04505b9",
+    },
+    "endpoint_request_uri": "https://lambda.eu-west-2.amazonaws.com/2015-03-31/functions/arn:aws:lambda:eu-west-2:958845080241:function:mock-receipt-api-2-25-VerifyReceiptFunction-8K5LT90CVKH6/invocations",
+    "endpoint_response_body": "{\\"body\\":\\"{\\\\\\"latest_receipt_info\\\\\\":[{\\\\\\"original_purchase_date\\\\\\":\\\\\\"Thu, 03 Jan 2019 15:39:10 GMT\\\\\\",\\\\\\"transaction_id\\\\\\":\\\\\\"5bc5e2c7-c33e-5bf7-87cf-8753c59fef95\\\\\\",\\\\\\"expires_date_ms\\\\\\":\\\\\\"1546529960667\\\\\\",\\\\\\"original_transaction_id\\\\\\":\\\\\\"5bc5e2c7-c33e-5bf7-87cf-8753c59fef95\\\\\\",\\\\\\"quantity\\\\\\":\\\\\\"1\\\\\\",\\\\\\"is_in_intro_offer_period\\\\\\":\\\\\\"false\\\\\\",\\\\\\"original_purchase_date_ms\\\\\\":\\\\\\"1546529950667\\\\\\",\\\\\\"expires_date\\\\\\":\\\\\\"Thu, 03 Jan 2019 15:39:20 GMT\\\\\\",\\\\\\"purchase_date_ms\\\\\\":\\\\\\"1546529950667\\\\\\",\\\\\\"product_id\\\\\\":\\\\\\"com.SolveHQ.SolveSubTesting.OneWeekFreeTrial\\\\\\",\\\\\\"is_trial_period\\\\\\":\\\\\\"false\\\\\\",\\\\\\"purchase_date\\\\\\":\\\\\\"Thu, 03 Jan 2019 15:39:10 GMT\\\\\\"}],\\\\\\"receipt\\\\\\":{\\\\\\"receipt_type\\\\\\":\\\\\\"ProductionSandbox\\\\\\",\\\\\\"original_application_version\\\\\\":\\\\\\"1.0\\\\\\"},\\\\\\"latest_receipt\\\\\\":\\\\\\"fdfa87e8-b20e-410f-8aaf-5792c66ab07f\\\\\\",\\\\\\"environment\\\\\\":\\\\\\"Production\\\\\\",\\\\\\"pending_renewal_info\\\\\\":{\\\\\\"auto_renew_product_id\\\\\\":\\\\\\"com.SolveHQ.SolveSubTesting.OneWeekFreeTrial\\\\\\",\\\\\\"original_transaction_id\\\\\\":\\\\\\"5bc5e2c7-c33e-5bf7-87cf-8753c59fef95\\\\\\",\\\\\\"is_in_billin [TRUNCATED]",
+    "endpoint_response_headers": Object {
+      "Connection": "keep-alive",
+      "Content-Length": "1136",
+      "Content-Type": "application/json",
+      "Date": "Tue",
+      "X-Amz-Executed-Version": "$LATEST",
+      "X-Amzn-Trace-Id": "root",
+      "x-amzn-Remapped-Content-Length": "0",
+      "x-amzn-RequestId": "57593f79-6e46-4a6f-91b1-f5d848cc2059",
+    },
+    "http_method": "POST",
+    "http_resource_path": "/verifyReceipt",
+    "integration_latency": 40,
+    "method_request_body": Object {
+      "receiptData": "82ca4c4f-26dd-4554-a11e-c3feb5324345",
+    },
+    "method_request_headers": Object {
+      "Accept": "application/json",
+      "CloudFront-Forwarded-Proto": "https",
+      "CloudFront-Is-Mobile-Viewer": "false",
+      "CloudFront-Is-SmartTV-Viewer": "false",
+      "CloudFront-Is-Tablet-Viewer": "false",
+      "CloudFront-Viewer-Country": "US",
+      "Debug-Log-Enabled": "false",
+      "Host": "1xf1pqul21.execute-api.us-east-1.amazonaws.com",
+      "User-Agent": "axios/0.18.0",
+      "Via": "1.1 c94378b36f8a40d65d0bb1c2edbb9c73.cloudfront.net (CloudFront)",
+      "X-Amz-Security-Token": "AgoJb3JpZ2luX2VjEJL//////////wEaCXVzLWVhc3QtMSJHMEUCIFN1dxmkxBL7GziWUXoMjRorbIwF7i5tjbr96N3unyksAiEAhy85vB35laoOipf8DIiCZDNywV9BlfMIwg5KcLl/QX8qtQIIi///////////ARAAGgw5NjgyMjM4ODI3NjUiDFesMF5/+pdWWKb+viqJArEZe8OkQH2zGZMvEzK7o4zL0y7SncIYE94UAl3dt/PyPhyJzBk+Nu0ZQhUbKCDil1NIXjcUhMvEqNkWIqBUkr9I02cWcQeLz1h7A2mP6plxF/iUL5BRdsqsJNJDHqzq2KpITS1Rw/zqvp [TRUNCATED]",
+      "X-Amzn-Trace-Id": "Self",
+      "X-Forwarded-Port": "443",
+      "X-Forwarded-Proto": "https",
+      "x-amz-date": "20190511T093919Z",
+      "x-correlation-id": "f3d88489-f037-41bd-b8e5-85cc641cd798",
+    },
+    "method_response_body": Object {
+      "environment": "Production",
+      "latest_receipt": "fdfa87e8-b20e-410f-8aaf-5792c66ab07f",
+      "latest_receipt_info": Array [
+        Object {
+          "expires_date": "Thu, 03 Jan 2019 15:39:20 GMT",
+          "expires_date_ms": "1546529960667",
+          "is_in_intro_offer_period": "false",
+          "is_trial_period": "false",
+          "original_purchase_date": "Thu, 03 Jan 2019 15:39:10 GMT",
+          "original_purchase_date_ms": "1546529950667",
+          "original_transaction_id": "5bc5e2c7-c33e-5bf7-87cf-8753c59fef95",
+          "product_id": "com.SolveHQ.SolveSubTesting.OneWeekFreeTrial",
+          "purchase_date": "Thu, 03 Jan 2019 15:39:10 GMT",
+          "purchase_date_ms": "1546529950667",
+          "quantity": "1",
+          "transaction_id": "5bc5e2c7-c33e-5bf7-87cf-8753c59fef95",
+        },
+      ],
+      "pending_renewal_info": Object {
+        "auto_renew_product_id": "com.SolveHQ.SolveSubTesting.OneWeekFreeTrial",
+        "expiration_intent": "0",
+        "is_in_billing_retry_period": "0",
+        "original_transaction_id": "5bc5e2c7-c33e-5bf7-87cf-8753c59fef95",
+      },
+      "receipt": Object {
+        "original_application_version": "1.0",
+        "receipt_type": "ProductionSandbox",
+      },
+    },
+    "method_response_headers": Object {
+      "X-Amzn-Trace-Id": "Root",
+    },
+    "method_status": 200,
+    "request-end-time": 2019-02-26T15:29:33.774Z,
+    "request-execution-duration": 42,
+    "request-start-time": 2019-02-26T15:29:33.732Z,
+    "request_id": "515f1e99-39db-11e9-9e96-01e5c04505b9",
+    "request_path": "{}",
+    "request_query_string": Object {},
+  },
+}
+`;

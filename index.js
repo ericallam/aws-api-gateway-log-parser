@@ -1,6 +1,7 @@
 "use strict";
 
 const groupBy = require("lodash.groupby");
+const partialJSONParser = require("partial-json-parser");
 
 const _parseType1 = data => {
   let result = {};
@@ -23,55 +24,29 @@ const _parseType1 = data => {
   return result;
 };
 
-const _parseType2 = (config, data) => {
-  let result = {};
-  let _truncatedRegEx = /\[TRUNCATED\]/;
+const isEmpty = obj => {
+  for (var key in obj) {
+    if (obj.hasOwnProperty(key)) return false;
+  }
+  return true;
+};
 
-  if (
-    _truncatedRegEx.test(data) &&
-    config.TRUNCATED_RESPONSE_KEYS &&
-    config.TRUNCATED_RESPONSE_KEYS.length
-  ) {
-    config.TRUNCATED_RESPONSE_KEYS.forEach(obj => {
-      let _regEx = new RegExp(`"${obj.key}"(:"?)(.*?)("?)(\,|})`);
-      let _conversion = "String";
-      if (obj.type === "Integer" || obj.type === "Float") {
-        _conversion = "Number";
-      } else if (obj.type === "Boolean") {
-        _conversion = "Boolean";
+const _parseBody = data => {
+  try {
+    return JSON.parse(data);
+  } catch (e) {
+    try {
+      const partialData = partialJSONParser(data);
+
+      if (isEmpty(partialData)) {
+        return data;
       }
 
-      result[obj.key] =
-        data.match(_regEx) && data.match(_regEx).length
-          ? _conversion === "Boolean"
-            ? eval(
-                _conversion +
-                  "(" +
-                  eval(JSON.stringify(data.match(_regEx)[2])) +
-                  ")"
-              )
-            : eval(
-                _conversion + "(" + JSON.stringify(data.match(_regEx)[2]) + ")"
-              )
-          : null;
-      result.truncated = true;
-    });
-  } else if (
-    _truncatedRegEx.test(data) &&
-    (!config.TRUNCATED_RESPONSE_KEYS || !config.TRUNCATED_RESPONSE_KEYS)
-  ) {
-    result = {
-      truncated: true
-    };
-  } else {
-    try {
-      result = JSON.parse(data);
+      return partialData;
     } catch (e) {
-      result = {};
+      return data;
     }
   }
-
-  return result;
 };
 
 const _parseKeyThrottle = data => {
@@ -104,7 +79,7 @@ const _parseKeyThrottle = data => {
   return result;
 };
 
-const parseSingleRequest = (config, logEvents) => {
+const parseSingleRequest = logEvents => {
   const parseExps = {
     api_stage: /API Stage: (.*)/,
     request_id: /Verifying Usage Plan for request: (.{36})/,
@@ -112,10 +87,10 @@ const parseSingleRequest = (config, logEvents) => {
     http_resource_path: /Resource Path: (.*)/,
     request_path: /Method request path: (.*)/,
     request_query_string: /request query string: {(.*)}/,
-    method_request_headers: /Method request headers: {(.*)}/,
+    method_request_headers: /Method request headers: {(.*)}?/,
     method_request_body: /Method request body before transformations: (.*)/,
     endpoint_request_uri: /Endpoint request URI: (.*)/,
-    endpoint_request_headers: /Endpoint request headers: {(.*)}/,
+    endpoint_request_headers: /Endpoint request headers: {(.*)}?/,
     endpoint_request_body: /Endpoint request body after transformations: (.*)/,
     integration_latency: /Received response. Integration latency: (.*) ms/,
     endpoint_response_body: /Endpoint response body before transformations: (.*)/,
@@ -138,18 +113,20 @@ const parseSingleRequest = (config, logEvents) => {
 
         switch (exp) {
           case "request_query_string":
+            result[exp] = _parseType1(_captureGroup);
+            break;
           case "endpoint_request_headers":
           case "endpoint_response_headers":
           case "method_response_headers":
-          case "method_request_body":
-          case "endpoint_request_body":
           case "method_request_headers":
             result[exp] = _parseType1(_captureGroup);
             break;
 
+          case "endpoint_request_body":
           case "endpoint_response_body":
           case "method_response_body":
-            result[exp] = _parseType2(config, _captureGroup);
+          case "method_request_body":
+            result[exp] = _parseBody(_captureGroup);
             break;
 
           case "integration_latency":
@@ -180,11 +157,7 @@ const parseSingleRequest = (config, logEvents) => {
   return result;
 };
 
-const parseLogs = (config, logs) => {
-  if (!config) {
-    config = {};
-  }
-
+const parseLogs = logs => {
   if (!logs) {
     return null;
   }
@@ -205,7 +178,7 @@ const parseLogs = (config, logs) => {
   return Object.keys(logEventsByRequestId).map(requestId => {
     const logEvents = logEventsByRequestId[requestId];
 
-    return parseSingleRequest(config, logEvents);
+    return parseSingleRequest(logEvents);
   });
 };
 

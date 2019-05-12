@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`parsing log events that is a key throttle log returns the correct results 1`] = `
+Object {
+  "0": Object {
+    "@timestamp": "2019-02-26T15:29:30.161Z",
+    "api_stage": "uwe3g5jm54/Prod",
+    "key_throttle": Object {
+      "burst": 1,
+      "http_method": "POST",
+      "limit": 1,
+      "resource": "k0w8mc",
+    },
+    "method_status": 429,
+    "request-end-time": 2019-02-26T15:29:30.162Z,
+    "request-execution-duration": 1,
+    "request-start-time": 2019-02-26T15:29:30.161Z,
+    "request_id": "4f3e3b0f-39db-11e9-9c2e-5bd7c2de5998",
+  },
+}
+`;
